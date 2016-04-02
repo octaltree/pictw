@@ -24,12 +24,11 @@ def imgs():
 def postImgRespondUrl(filename, fileobj):
     import tweepy
     from secret import CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET
-    #auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-    #auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
-    #tw = tweepy.API(auth)
-    #tweet = tw.update_with_media(filename, file=fileobj)
-    #return tweet.text
-    return 'undefined', 500
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
+    tw = tweepy.API(auth)
+    tweet = tw.update_with_media(filename, file=fileobj)
+    return tweet.text
 
 if __name__ == "__main__" :
     exit(app.run(debug=True))
