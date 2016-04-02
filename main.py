@@ -2,18 +2,13 @@
 from flask import Flask
 from flask import request
 import tweepy
+from secret import CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET
 
 # undefined :: a
 undefined = None
 
-#CONSUMER_KEY = ''
-#CONSUMER_SECRET = ''
-#ACCESS_TOKEN = ''
-#ACCESS_SECRET = ''
-#
-#auth = undefined
+#auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 #auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
-#
 #tw = tweepy.API(auth)
 app = Flask(__name__)
 
