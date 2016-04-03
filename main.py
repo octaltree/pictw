@@ -28,7 +28,8 @@ def postImgRespondUrl(filename, fileobj):
     auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
     tw = tweepy.API(auth)
     tweet = tw.update_with_media(filename, file=fileobj)
-    return tweet.text
+    #return tweet.text
+    return tweet.extended_entities['media'][0]['display_url']
 
 if __name__ == "__main__" :
     exit(app.run(debug=True))
