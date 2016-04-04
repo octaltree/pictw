@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from flask import Flask, Response, request
 from flask.ext.cors import CORS
+from flask.ext.cache import Cache
 from mimetypes import guess_all_extensions
 from io import BytesIO
 import urllib.request
@@ -8,7 +9,10 @@ import urllib.request
 # undefined :: a
 undefined = None
 
+CACHE_TYPE = 'simple'
 app = Flask(__name__)
+app.config.from_object(__name__)
+cache = Cache(app)
 CORS(app)
 
 @app.route('/imgs', methods=['GET', 'POST'])
