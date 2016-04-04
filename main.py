@@ -30,7 +30,7 @@ def makeThumKey():
     return list(request.args.keys())[0]
 
 @app.route('/thumbnail', methods=['GET'])
-@app.cache.cached(timeout=30, key_prefix=makeThumKey)
+@app.cache.cached(timeout=3600, key_prefix=makeThumKey)
 def thumbnail():
     def get(req):
         r = urllib.request
