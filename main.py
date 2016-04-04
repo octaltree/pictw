@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from flask import Flask, Response, request
 from flask.ext.cors import CORS
+from flask.ext.cache import Cache
 from mimetypes import guess_all_extensions
 from io import BytesIO
 import urllib.request
@@ -9,6 +10,8 @@ import urllib.request
 undefined = None
 
 app = Flask(__name__)
+app.config['CACHE_TYPE'] = 'simple'
+app.cache = Cache(app)
 CORS(app)
 
 @app.route('/imgs', methods=['GET', 'POST'])
@@ -23,7 +26,11 @@ def imgs():
     if request.method == 'POST': return post(request)
     else: return 'post image, return "pic.twitter.com/.*"'
 
+def makeThumKey():
+    return list(request.args.keys())[0]
+
 @app.route('/thumbnail', methods=['GET'])
+@app.cache.cached(timeout=30, key_prefix=makeThumKey)
 def thumbnail():
     def get(req):
         r = urllib.request
