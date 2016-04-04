@@ -10,3 +10,4 @@ ${env} ${sandbox}
 source ${sandbox}/bin/activate
 ${pip} install tweepy
 ${pip} install flask
+${pip} install flask-cors
