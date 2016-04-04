@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from flask import Flask
 from flask import request
+from flask.ext.cors import CORS
 from mimetypes import guess_all_extensions
 from io import BytesIO
 
@@ -8,6 +9,7 @@ from io import BytesIO
 undefined = None
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/imgs', methods=['GET', 'POST'])
 def imgs():
