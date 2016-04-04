@@ -31,8 +31,5 @@ def postImgRespondUrl(filename, fileobj):
     #return tweet.text
     return tweet.extended_entities['media'][0]['display_url']
 
-if __name__ == "__main__" :
-    exit(app.run())
-
 # vim:fenc=utf-8 ff=unix ft=python ts=4 sw=4 sts=4 si et fdm=indent fdl=0 fdn=1:
 # vim:cinw=if,elif,else,for,while,try,except,finally,def,class:
